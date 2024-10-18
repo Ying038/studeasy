@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VARK Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap_v5.3.1.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="studeasy.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>VARK Test</h1>
+        <form id="learningStyleTest" onsubmit="return showResults(event)">
+            <!-- Question 1 -->
+            <div class="question">
+                <p>1. When learning something new, how do you prefer to receive the information?</p>
+                <label><input type="radio" name="q1" value="visual"> By seeing diagrams, charts, or pictures (Visual)</label>
+                <label><input type="radio" name="q1" value="auditory"> By listening to lectures or audio (Auditory)</label>
+                <label><input type="radio" name="q1" value="reading"> By reading books or writing notes (Reading/Writing)</label>
+                <label><input type="radio" name="q1" value="kinesthetic"> By doing hands-on activities (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <p>2. When you are trying to solve a problem, how do you prefer to approach it?</p>
+                <label><input type="radio" name="q2" value="visual"> By visualizing the problem or drawing it out (Visual)</label>
+                <label><input type="radio" name="q2" value="auditory"> By talking through the problem (Auditory)</label>
+                <label><input type="radio" name="q2" value="reading"> By reading about similar problems and writing out the solution (Reading/Writing)</label>
+                <label><input type="radio" name="q2" value="kinesthetic"> By experimenting and trying different solutions (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <p>3. How do you prefer to study for an exam?</p>
+                <label><input type="radio" name="q3" value="visual"> By looking at charts, diagrams, or images (Visual)</label>
+                <label><input type="radio" name="q3" value="auditory"> By listening to recordings or explaining concepts out loud (Auditory)</label>
+                <label><input type="radio" name="q3" value="reading"> By reading textbooks and taking notes (Reading/Writing)</label>
+                <label><input type="radio" name="q3" value="kinesthetic"> By doing practice problems or building models (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <p>4. In a classroom setting, what helps you focus the most?</p>
+                <label><input type="radio" name="q4" value="visual"> Visual aids like presentations or handouts (Visual)</label>
+                <label><input type="radio" name="q4" value="auditory"> Listening to the teacher explain the material (Auditory)</label>
+                <label><input type="radio" name="q4" value="reading"> Reading or taking detailed notes (Reading/Writing)</label>
+                <label><input type="radio" name="q4" value="kinesthetic"> Engaging in hands-on activities or labs (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <p>5. How do you prefer to understand new ideas?</p>
+                <label><input type="radio" name="q5" value="visual"> By watching demonstrations or visual examples (Visual)</label>
+                <label><input type="radio" name="q5" value="auditory"> By discussing the ideas with others (Auditory)</label>
+                <label><input type="radio" name="q5" value="reading"> By reading about them (Reading/Writing)</label>
+                <label><input type="radio" name="q5" value="kinesthetic"> By trying things out and seeing how they work (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <p>6. How do you prefer to remember things?</p>
+                <label><input type="radio" name="q6" value="visual"> By looking at pictures or diagrams (Visual)</label>
+                <label><input type="radio" name="q6" value="auditory"> By repeating information aloud (Auditory)</label>
+                <label><input type="radio" name="q6" value="reading"> By writing down notes (Reading/Writing)</label>
+                <label><input type="radio" name="q6" value="kinesthetic"> By doing something related to the topic (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <p>7. How do you prefer to receive feedback?</p>
+                <label><input type="radio" name="q7" value="visual"> Through visual feedback like charts or reports (Visual)</label>
+                <label><input type="radio" name="q7" value="auditory"> By talking about what went well and what did not (Auditory)</label>
+                <label><input type="radio" name="q7" value="reading"> By reading detailed written feedback (Reading/Writing)</label>
+                <label><input type="radio" name="q7" value="kinesthetic"> Through hands-on corrections or demonstrations (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <p>8. When planning a project, how do you prefer to organize your tasks?</p>
+                <label><input type="radio" name="q8" value="visual"> By creating visual lists or diagrams (Visual)</label>
+                <label><input type="radio" name="q8" value="auditory"> By discussing tasks with others (Auditory)</label>
+                <label><input type="radio" name="q8" value="reading"> By writing out a step-by-step plan (Reading/Writing)</label>
+                <label><input type="radio" name="q8" value="kinesthetic"> By physically arranging materials or trying things out (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <p>9. How do you prefer to learn new technology or tools?</p>
+                <label><input type="radio" name="q9" value="visual"> By watching videos or demonstrations (Visual)</label>
+                <label><input type="radio" name="q9" value="auditory"> By listening to someone explain how to use it (Auditory)</label>
+                <label><input type="radio" name="q9" value="reading"> By reading manuals or guides (Reading/Writing)</label>
+                <label><input type="radio" name="q9" value="kinesthetic"> By using the tools and experimenting with them (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <p>10. How do you prefer to work in a team?</p>
+                <label><input type="radio" name="q10" value="visual"> By using visual tools like charts to communicate (Visual)</label>
+                <label><input type="radio" name="q10" value="auditory"> By having discussions and meetings (Auditory)</label>
+                <label><input type="radio" name="q10" value="reading"> By exchanging written notes and memos (Reading/Writing)</label>
+                <label><input type="radio" name="q10" value="kinesthetic"> By actively participating in hands-on tasks (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question">
+                <p>11. How do you prefer to give presentations?</p>
+                <label><input type="radio" name="q11" value="visual"> By using visuals like slides or posters (Visual)</label>
+                <label><input type="radio" name="q11" value="auditory"> By speaking and explaining ideas (Auditory)</label>
+                <label><input type="radio" name="q11" value="reading"> By preparing detailed handouts (Reading/Writing)</label>
+                <label><input type="radio" name="q11" value="kinesthetic"> By incorporating interactive elements (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question">
+                <p>12. When visiting a new place, how do you prefer to explore it?</p>
+                <label><input type="radio" name="q12" value="visual"> By looking at maps or guides (Visual)</label>
+                <label><input type="radio" name="q12" value="auditory"> By listening to tour guides or audio guides (Auditory)</label>
+                <label><input type="radio" name="q12" value="reading"> By reading about the place (Reading/Writing)</label>
+                <label><input type="radio" name="q12" value="kinesthetic"> By walking around and discovering it yourself (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question">
+                <p>13. How do you prefer to be entertained?</p>
+                <label><input type="radio" name="q13" value="visual"> By watching movies or shows (Visual)</label>
+                <label><input type="radio" name="q13" value="auditory"> By listening to music or podcasts (Auditory)</label>
+                <label><input type="radio" name="q13" value="reading"> By reading books or articles (Reading/Writing)</label>
+                <label><input type="radio" name="q13" value="kinesthetic"> By engaging in outdoor activities or games (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question">
+                <p>14. When you have a lot of work to do, how do you prefer to approach it?</p>
+                <label><input type="radio" name="q14" value="visual"> By organizing visually with to-do lists or charts (Visual)</label>
+                <label><input type="radio" name="q14" value="auditory"> By talking it through with others (Auditory)</label>
+                <label><input type="radio" name="q14" value="reading"> By writing out a detailed plan (Reading/Writing)</label>
+                <label><input type="radio" name="q14" value="kinesthetic"> By physically organizing your workspace (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question">
+                <p>15. How do you prefer to process your thoughts?</p>
+                <label><input type="radio" name="q15" value="visual"> By creating mind maps or diagrams (Visual)</label>
+                <label><input type="radio" name="q15" value="auditory"> By talking about them out loud (Auditory)</label>
+                <label><input type="radio" name="q15" value="reading"> By writing them down (Reading/Writing)</label>
+                <label><input type="radio" name="q15" value="kinesthetic"> By acting them out or experimenting (Kinesthetic)</label>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="question">
+                <p>16. How do you prefer to explain an idea to others?</p>
+                <label><input type="radio" name="q16" value="visual"> By drawing a diagram or showing a picture (Visual)</label>
+                <label><input type="radio" name="q16" value="auditory"> By discussing and talking about it (Auditory)</label>
+                <label><input type="radio" name="q16" value="reading"> By writing it out clearly (Reading/Writing)</label>
+                <label><input type="radio" name="q16" value="kinesthetic"> By showing them through a demonstration (Kinesthetic)</label>
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+
+        <!-- Result Section -->
+        <div id="result" style="display:none;">
+            <h2>Your Results</h2>
+            <div id="answers"></div>
+            <canvas id="learningStyleChart" width="400" height="200"></canvas> <!-- Canvas for the chart -->
+            <div id="learningStyleResult"></div>
+        </div>
+    </div>
+
+
+    <script>
+        function validateForm() {
+            const questions = document.querySelectorAll('.question');
+            let allAnswered = true;
+
+            questions.forEach((question) => {
+                const radios = question.querySelectorAll('input[type="radio"]');
+                const answered = Array.from(radios).some(radio => radio.checked);
+                if (!answered) {
+                    allAnswered = false;
+                }
+            });
+
+            return allAnswered; // Return true or false based on whether all questions are answered
+        }
+
+        function showResults(event) {
+            event.preventDefault(); // Prevent the default form submission
+            if (!validateForm()) {
+                alert("Please answer all questions before submitting.");
+                return; // Stop further execution if not all questions are answered
+            }
+
+            // Gather results
+            const answers = [];
+            const questions = document.querySelectorAll('.question');
+            questions.forEach((question, index) => {
+                const selectedRadio = question.querySelector('input[type="radio"]:checked');
+                answers.push(`Question ${index + 1}: ${selectedRadio.value}`);
+            });
+
+            // Show the results section
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            // Show learning style result
+            showLearningStyleResult();
+        }
+
+        function showLearningStyleResult() {
+            // Count the selected answers
+            var visualCount = document.querySelectorAll('input[value="visual"]:checked').length;
+            var auditoryCount = document.querySelectorAll('input[value="auditory"]:checked').length;
+            var readingCount = document.querySelectorAll('input[value="reading"]:checked').length;
+            var kinestheticCount = document.querySelectorAll('input[value="kinesthetic"]:checked').length;
+
+            // Total checked answers
+            var totalCount = visualCount + auditoryCount + readingCount + kinestheticCount;
+
+            // Initialize percentages
+            var visualPercentage = 0;
+            var auditoryPercentage = 0;
+            var readingPercentage = 0;
+            var kinestheticPercentage = 0;
+
+            // Calculate percentages if totalCount is greater than 0
+            if (totalCount > 0) {
+                visualPercentage = (visualCount / totalCount) * 100;
+                auditoryPercentage = (auditoryCount / totalCount) * 100;
+                readingPercentage = (readingCount / totalCount) * 100;
+                kinestheticPercentage = (kinestheticCount / totalCount) * 100;
+            }
+
+            // Create result text with percentages
+            var resultText = "Your learning style percentages are as follows:<br>" +
+                `Visual: ${visualPercentage.toFixed(2)}%<br>` +
+                `Auditory: ${auditoryPercentage.toFixed(2)}%<br>` +
+                `Reading/Writing: ${readingPercentage.toFixed(2)}%<br>` +
+                `Kinesthetic: ${kinestheticPercentage.toFixed(2)}%<br>`;
+
+            // Determine the dominant learning style
+            if (visualCount > auditoryCount && visualCount > readingCount && visualCount > kinestheticCount) {
+                resultText += "You prefer to learn through visual aids like charts and diagrams.";
+            } else if (auditoryCount > visualCount && auditoryCount > readingCount && auditoryCount > kinestheticCount) {
+                resultText += "You prefer to learn by listening and talking through concepts.";
+            } else if (readingCount > visualCount && readingCount > auditoryCount && readingCount > kinestheticCount) {
+                resultText += "You prefer to learn by reading and writing notes.";
+            } else if (kinestheticCount > visualCount && kinestheticCount > auditoryCount && kinestheticCount > readingCount) {
+                resultText += "You prefer hands-on learning through activities.";
+            } else {
+                resultText += "You have a mixed learning style.";
+            }
+
+            // Display the learning style result
+            document.getElementById("learningStyleResult").innerHTML = resultText; // Use innerHTML to allow HTML formatting
+            
+            // Render the chart
+            renderChart(visualPercentage, auditoryPercentage, readingPercentage, kinestheticPercentage);
+        }
+
+        function renderChart(visual, auditory, reading, kinesthetic) {
+            const ctx = document.getElementById('learningStyleChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'pie', // Change type from 'bar' to 'pie'
+                data: {
+                    labels: ['Visual', 'Auditory', 'Reading/Writing', 'Kinesthetic'],
+                    datasets: [{
+                        label: 'Learning Style Percentages',
+                        data: [visual, auditory, reading, kinesthetic],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Learning Style Distribution'
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+    <script src="lib/easytimer.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/lodash.min.js"></script>
+    <script src="lib/bootstrap.bundle.min.js"></script>
+    <script src="lib/default.js"></script>
+</html>
+

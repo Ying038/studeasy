@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Studeasy</title>
+        <link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="bootstrap_v5.3.1.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="icon" type="image/x-icon" href="studeasy.png">
+
+    </head>
+
+    <body>
+
+
+        <!--div class="topnav">
+            <a href="index.html">Home</a>
+			<a href="duration.html">Study Duration</a>
+            <a href="About.html">About</a>
+            <div class="dropdown">
+                <button class="dropbtn">Learning Type <i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                  <a href="visual.html">Visual</a>
+                  <a href="audio.html">Auditory</a>
+                  <a href="read.html">Read / Write</a>
+                  <a href="kinesthetic.html">Kinesthetic</a>
+                  <a href="Vark.html">VARK Test</a>
+                </div>
+            </div>
+            <a href="Contact.html">Contact</a>
+            <a href="Feedback.html">Feedback</a>
+        </div-->
+       
+        
+        <div class="about">
+            <h1>Welcome to Studeasy</h1>
+            <h3>This website will let you know your learning type.</h3>
+
+        <div class="text-center">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" id="auth">
+                Login
+            </button>
+        </div>            
+            <!-- Modal -->
+            <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="loginModalLabel">Input your user ID and password</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-userid"><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" placeholder="User ID" aria-label="UserID" aria-describedby="basic-userid" id="userid">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-password"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" aria-label="UserPassword" aria-describedby="basic-password" id="userpassword">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submitlogin">Login</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="visual">
+            <h1>VISUAL</h1>
+            <h3>Learn more:</h3>
+            <a href ="visual.html" button class="button1">Click Here</a></button>
+        </div>
+
+        <div class="audio">
+            <h1>AUDIO</h1>
+            <h3>Learn more:</h3>
+            <a href ="audio.html" button class="button1">Click Here</a></button>
+        </div>
+
+        <div class="read">
+            <h1>READ / WRITE</h1>
+            <h3>Learn more:</h3>
+            <a href ="read.html" button class="button1">Click Here</a></button>
+        </div>
+
+        <div class="kinesthetic">
+            <h1>KINESTHETIC</h1>
+            <h3>Learn more:</h3>
+            <a href ="kinesthetic.html" button class="button1">Click Here</a></button>
+        </div>
+
+        <div class="logo">
+            <img src="studeasy.png"  width="500" height="500" >
+            <div class="box">
+                <h1>Studeasy</h1>
+                <h3>Email: studeasy@gmail.com</h3>
+                <h3>Phone Number: 012-3456789</h3>
+            </div>
+        </div>
+
+        
+
+    </body>
+	
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/lodash.min.js"></script>
+	<script src="lib/bootstrap.bundle.min.js"></script>
+	<script src="lib/default.js"></script>
+
+
+    <script>
+        var myModal = new bootstrap.Modal(document.getElementById('loginModal'));
+    
+        // Function to check if user is authenticated
+        function checkAuth() {
+            var sdata = JSON.parse(localStorage.getItem('sdata')) || {};
+            if (sdata.authenticatedUser) {
+                $('#auth').hide();  // Hide login button if user is authenticated
+                toast(`Welcome back, ${sdata.authenticatedUser}`);
+            }
+        }
+    
+        // Call checkAuth on page load to hide login button if already authenticated
+        $(document).ready(() => {
+            checkAuth();
+        });
+    
+        $('#auth').on('click', () => {
+            myModal.show();
+        });
+    
+        $('#submitlogin').on('click', () => {
+            var userid = $('#userid').val(),
+                pass = $('#userpassword').val();
+    
+            var sdata = JSON.parse(localStorage.getItem('sdata')) || {};
+    
+            if (sdata[userid] && sdata[userid].password == pass) {
+                sdata.authenticatedUser = userid;  // Set authenticated user in localStorage
+                localStorage.setItem('sdata', JSON.stringify(sdata));
+                toast(`Login successful`);
+    
+                // Hide the login button after successful login
+                $('#auth').hide();
+    
+                loadShared();
+            } else {
+                toast(`Login is invalid, please try again`);
+            }
+    
+            myModal.hide();
+        });
+    </script>
+    
+</html>

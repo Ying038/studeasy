@@ -1,0 +1,564 @@
+/*body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+  
+.topnav {
+    overflow: hidden;
+    background-color: rgb(217, 244, 223);
+ }
+
+ .topnav a {
+    float: left;
+    color: green;
+    text-align: center;
+    padding: 20px 25px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+
+}
+  
+
+
+
+ .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 17px;  
+    border: none;
+    outline: none;
+    color: green;
+    padding: 20px 25px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;   
+    font-weight: bold;
+  }
+  
+  .topnav a:hover, .dropdown:hover .dropbtn {
+    background-color: green;
+    color: white;
+  }
+  
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(217, 244, 223);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: green;
+    padding: 20px 41px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 17px;
+
+  }
+  
+  .dropdown-content a:hover {
+    background-color: green ;
+    color: white;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+*/
+
+.hand {
+    cursor: pointer;
+}
+.studysaviour{
+    background-image: url('studysaviour.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 600px;
+    padding: 260px 50px;
+    border-bottom: 3px solid black;
+}
+
+.about{
+    background-image: url('mainbg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    padding: 200px 50px;
+    border-bottom: 3px solid black;
+
+}
+
+.about h1 {
+    text-align: center;
+    font-size: 45px;
+    color: black;
+}
+.about h3 {
+    text-align: center;
+    font-size: 25px;
+
+}
+
+.visual {
+    background-image: url('visual.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 250px;
+    padding: 40px 50px;
+    border-bottom: 3px solid black;
+}
+
+.visual h1{
+    color: black;
+    text-shadow: 2px 2px rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.visual h3{
+    color: black;
+}
+
+.values {
+    color: rgb(44, 6, 114);
+    text-shadow: 2px 2px rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+
+.button1 {
+    background-color: rgb(104, 115, 238); /* Green */
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+  
+.button1:hover{
+    background-color: rgb(0, 7, 86);
+}
+
+
+.audio{
+    background-image: url('audio.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 250px;
+    padding: 40px 50px;
+    border-bottom: 3px solid black;
+}
+
+.audio h1{
+    color: black;
+    text-shadow: 2px 2px rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.audio h3{
+    color: black;
+}
+
+
+
+.read{
+    background-image: url('read.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 250px;
+    padding: 40px 50px;
+    border-bottom: 3px solid black;
+}
+
+.read h1{
+    color: black;
+    text-shadow: 2px 2px rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.read h3{
+    color: black;
+}
+
+.kinesthetic{
+    background-image: url('kinesthetic.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 250px;
+    padding: 40px 50px;
+    border-bottom: 3px solid black;
+}
+
+.kinesthetic h1{
+    color: black;
+    text-shadow: 2px 2px rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.kinesthetic h3{
+    color: black;
+}
+
+.logo{
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    padding: 10px;
+    
+}
+img{
+    float: left;
+    height: 450px;
+    width: 450px;
+}
+.box{
+    padding: 100px ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+    background-color: rgb(144, 152, 238); /* Green */
+    margin: 80px;
+}
+
+.vis{
+    background-color: lightgoldenrodyellow;
+    padding:0px;
+    min-height: 100vh;
+}
+.vis h1{
+    background-color: rgb(230, 177, 45);
+    font-size: 70px;
+    text-align: center;
+    color: white;
+    font-size: bold;
+    margin: auto;
+    height: 50%;
+    padding: 20px;
+}
+.vis h3{
+    margin-left: 40px;
+    margin-right: 40px;
+    background-color: rgb(239, 239, 141);
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 20px 0px;
+    text-align: center;
+    width: 95%;
+}
+.vis p{
+    font-size: 20px;
+    padding-left: 50px;
+    font-weight: bold;
+}
+
+.vis_ul{
+    font-size: 20px;
+}
+
+.vis a{
+    color: black ;
+    text-decoration: none;
+}
+.vis p :hover{
+    color: blue;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.column img{
+    margin: 10px 80px;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+  
+@media screen and (max-width:1100px) {
+    .column {
+      width: 100%;
+    }
+}
+
+
+.buybutton {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 150px;
+    cursor: pointer;
+    border-radius: 75px;
+    font-size: 15px;
+}
+  
+.buybutton:hover{
+    background-color: #3e8e41;
+}
+
+.aud{
+    background-color: lightcyan;
+    padding:0px;
+    min-height: 100vh;
+}
+.aud h1{
+    background-color: rgb(77, 178, 218);
+    font-size: 70px;
+    text-align: center;
+    color: white;
+    font-size: bold;
+    margin: auto;
+    height: 50%;
+    padding: 20px;
+}
+.aud h3{
+    background-color: rgb(158, 225, 247);
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 20px 0px;
+    text-align: center;
+    width: 95%;
+}
+
+.aud p{
+    font-size: 19px;
+    padding-left: 50px;
+    font-weight: bold;
+}
+
+.aud a{
+    color: black ;
+    text-decoration: none;
+}
+.aud p :hover{
+    color: blue;
+}
+
+.aud_ul{
+    font-size: 20px;
+}
+
+
+
+
+
+.kin{
+    background-color: rgb(240, 206, 212);
+    padding:0px;
+    min-height: 100vh;
+}
+.kin h1{
+    background-color: rgb(244, 152, 166);
+    font-size: 70px;
+    text-align: center;
+    color: white;
+    font-size: bold;
+    margin: auto;
+    height: 50%;
+    padding: 20px;
+}
+.kin h3{
+    background-color: rgb(249, 182, 193);
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 20px 0px;
+    text-align: center;
+    width: 95%;
+}
+
+.kin p{
+    font-size: 19px;
+    padding-left: 50px;
+    font-weight: bold;
+}
+
+.kin a{
+    color: black ;
+    text-decoration: none;
+}
+.kin p :hover{
+    color: blue;
+}
+.kin_ul{
+    font-size: 20px;
+}
+
+
+
+
+.rea{
+    background-color: rgb(235, 183, 235);
+    padding:0px;
+    min-height: 100vh;
+}
+.rea h1{
+    background-color: purple;
+    font-size: 70px;
+    text-align: center;
+    color: white;
+    font-size: bold;
+    margin: auto;
+    height: 50%;
+    padding: 20px;
+}
+.rea h3{
+    background-color: rgb(225, 132, 225);
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 20px 0px;
+    text-align: center;
+    width: 95%;
+}
+
+.rea p{
+    font-size: 19px;
+    padding-left: 50px;
+    font-weight: bold;
+}
+
+.rea a{
+    color: black ;
+    text-decoration: none;
+}
+.rea p :hover{
+    color: blue;
+}
+.rea_ul{
+    font-size: 20px;
+}
+
+
+
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto; /* Center the container horizontally */
+    position: relative; /* Allows flexibility for further centering options */
+    top: 50px; /* Adjust this value as per your design */
+}
+
+
+
+/* Question styling */
+.question p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: left; /* Aligns the text to the left */
+}
+
+label:hover {
+    background-color: #e0e0e0;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+    vertical-align: middle; /* Aligns the radio button vertically with the text */
+}
+
+
+/* Button styling */
+.button2 {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.button2:hover {
+    background-color: #45a049;
+}
+
+/* Result section styling */
+#result {
+    margin-top: 25px;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+    min-height: 30px;
+}
+
+#learningStyleChart {
+    max-width: 300px; /* Set a maximum width */
+    max-height: 300px; /* Set a maximum height */
+    margin: auto; /* Center the chart */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+    
+}
+

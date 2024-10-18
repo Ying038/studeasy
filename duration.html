@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Study Duration</title>
+
+        <link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="bootstrap_v5.3.1.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="icon" type="image/x-icon" href="studeasy.png">
+    </head>
+
+    <body>
+
+        <!--div class="topnav">
+            <a href="index.html">Home</a>
+            <a href="About.html">About</a>
+            <div class="dropdown">
+                <button class="dropbtn">Learning Type <i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                  <a href="visual.html">Visual</a>
+                  <a href="audio.html">Auditory</a>
+                  <a href="read.html">Read / Write</a>
+                  <a href="kinesthetic.html">Kinesthetic</a>
+                  <a href="Vark.html">VARK Test</a>
+                </div>
+            </div>
+            <a href="Contact.html">Contact</a>
+            <a href="Feedback.html">Feedback</a>
+        </div-->
+
+
+
+        <div class="about text-center" >
+			<div class="row justify-content-md-center">
+				<div class="col-8 text-center">				 
+					<select id="subject" class="form-select form-select-lg mb-3">
+						<option value="0">Malay</option>
+						<option value="1">English</option>
+						<option value="2">Chinese</option>
+						<option value="3">Mathematics</option>
+						<option value="4">Additional Mathematics</option>
+						<option value="5">Biology</option>
+						<option value="6">Chemistry</option>
+						<option value="7">Physics</option>
+						<option value="8">History</option>
+						<option value="9">Moral</option>
+						<option value="10">Account</option>
+						<option value="11">Economy</option>
+						<option value="12">Science</option>
+						<option value="13">Computer Science</option>
+						<option value="14">Business</option>
+						<option value="15">Islam</option>
+					</select>
+				</div>
+			</div>
+            <!--h1>Welcome to Studeasy by Unknown</h1>
+            <h3>This website will let you know your learning type.</h3!-->
+			<div id="chronoStudy" class="offset-1 col-10">
+				<div class="values" style="font-size:200px">00:00:00:0</div>
+				<div>
+                    <button class="startButton btn btn-success btn-lg mb-1">Start</button>
+                    <button class="pauseButton btn btn-primary btn-lg mb-1">Pause</button>
+                    <button class="stopButton btn btn-danger btn-lg mb-1">Stop</button>
+                    <button class="resetButton btn btn-warning btn-lg mb-1">Reset</button>
+                </div>
+				<br>
+				<table class="table table-hover table-striped table-bordered" id="durationHist" style="display:none">
+
+				</table>
+			</div>
+
+
+
+        </div>
+		
+			
+        
+    </body>
+	
+	<script src="lib/easytimer.min.js"></script>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/lodash.min.js"></script>
+	<script src="lib/bootstrap.bundle.min.js"></script>
+	<script src="lib/default.js"></script>
+	
+	<script>
+		var timer = new easytimer.Timer();
+		loadDuration()
+
+		$('#chronoStudy .startButton').click(function () {
+			timer.start({precision: 'secondTenths'});
+		});
+
+		$('#chronoStudy .pauseButton').click(function () {
+			timer.pause();
+		});
+
+		$('#chronoStudy .stopButton').click(function () {
+			if (confirm('Stop the study?')) {
+				const total = timer.getTotalTimeValues()
+				
+				var hour = total.hours
+				var min = total.minutes
+				var sec = total.seconds
+				
+				$('.toast-body').html(`Study ${$( "#subject option:selected" ).text()} for ${hour} hour(s) ${min} minute(s) ${sec} second(s)`)
+				timer.stop();
+				var toastLiveExample = document.getElementById('liveToast')
+				var toast = new bootstrap.Toast(toastLiveExample)
+
+
+				var sdata = JSON.parse(localStorage.getItem('sdata'))
+
+				var durations = sdata[sdata.authenticatedUser].durations || []
+				durations.push( {subject : $( "#subject option:selected" ).text(), hour: hour, min: min, sec : sec})
+
+				sdata[sdata.authenticatedUser].durations = durations
+				localStorage.setItem('sdata', JSON.stringify(sdata))
+
+				toast.show()
+
+				loadDuration()
+			}
+		});
+
+		$('#chronoStudy .resetButton').click(function () {
+			if (confirm('Reset the study?')) {	
+				timer.stop();
+				timer.start({precision: 'secondTenths'});
+			}
+			
+		});
+
+		timer.addEventListener('secondTenthsUpdated', function (e) {
+			$('#chronoStudy .values').html(timer.getTimeValues().toString(['hours', 'minutes', 'seconds', 'secondTenths']));
+		});
+		/*timer.addEventListener('secondsUpdated', function (e) {
+			$('#chronoStudy .values').html(timer.getTimeValues().toString());
+		});*/
+
+		timer.addEventListener('started', function (e) {
+			$('#chronoStudy .values').html(timer.getTimeValues().toString());
+		});
+
+		timer.addEventListener('reset', function (e) {
+			$('#chronoStudy .values').html(timer.getTimeValues().toString());
+		});
+
+		/*var toastTrigger = document.getElementById('liveToastBtn')
+		var toastLiveExample = document.getElementById('liveToast')
+		if (toastTrigger) {
+		  toastTrigger.addEventListener('click', function () {
+			var toast = new bootstrap.Toast(toastLiveExample)
+
+			toast.show()
+		  })
+		}*/
+
+		function loadDuration() {
+			var sdata = JSON.parse(localStorage.getItem('sdata'))
+
+			var durations = sdata[sdata.authenticatedUser].durations || []
+
+
+			if (durations.length) {
+
+				$('#durationHist').html(`
+					<thead>
+					<tr class="table-secondary">
+						
+						<th>Subject</th><th>Duration</th><th></th>
+						
+					</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				`)
+
+				durations.forEach( (duration, i)=>{
+					$('#durationHist tbody').append(`
+					<tr>
+						<td>${duration.subject}</td><td>${pad(duration.hour, 2)}:${pad(duration.min, 2)}:${pad(duration.sec, 2)}</td><td><i id="${i}" class="hand fa fa-minus" aria-hidden="true"></i> </td>
+					</tr>`)
+
+					$(`#${i}`).on('click', ()=>{
+
+						var sdata = JSON.parse(localStorage.getItem('sdata'))
+
+						var durations = sdata[sdata.authenticatedUser].durations || []
+						durations.splice(i,1)
+
+						sdata[sdata.authenticatedUser].durations = durations
+						localStorage.setItem('sdata', JSON.stringify(sdata))
+
+						/* $('.toast-body').html(`Item removed`)
+						
+						var toastLiveExample = document.getElementById('liveToast')
+						var toast = new bootstrap.Toast(toastLiveExample) */
+
+						loadDuration()
+
+
+					})
+				})
+
+				$('#durationHist').show()
+			}
+
+
+		}
+
+
+	</script>
+	
+</html>

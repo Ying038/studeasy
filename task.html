@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task List</title>
+        <link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="bootstrap_v5.3.1.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="icon" type="image/x-icon" href="studeasy.jpg">
+    </head>
+
+    <body>
+
+        <div class="about text-center task" >
+
+            <h1>Task List</h1>
+			<h2 class=""> Click on the + button to add task</h2>
+			<!--div class="row justify-content-md-center">
+				<div class="col-8 text-center">				 
+					<select id="subject" class="form-select form-select-lg mb-3">
+					<option value="math">Math</option>
+					<option value="eng">English</option>
+					<option value="hist">History</option>
+					</select>
+				</div>
+			</div-->
+
+
+			<table class="table table-xs" id="taskEntry">
+				<tbody><tr>
+				  <th>No</th>
+				  <th></th>
+				  <th>Hours</th>
+				  <th>Description</th>
+				  <th>
+					<i class="hand addmed fa fa-plus" aria-hidden="true"></i>
+				  </th>
+				</tr>
+			  </tbody></table>
+
+			  <div><button class="btn btn-success btn-lg mb-1" id="updateTask">Update</button></div>
+
+        </div>
+		
+			<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+			  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-config='{"delay":10000}'>
+				<div class="toast-header">
+				  <strong class="me-auto">Study Complete</strong>
+				  <!--small>sometimes ago</small-->
+				  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				</div>
+				<div class="toast-body">
+				</div>
+			  </div>
+			</div>
+        
+    </body>
+	
+	<script src="lib/easytimer.min.js"></script>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/lodash.min.js"></script>
+	<script src="lib/bootstrap.bundle.min.js"></script>
+	<script src="lib/default.js"></script>
+	
+	<script>
+		
+		var sdata = JSON.parse(localStorage.getItem('sdata'))
+
+		$('#updateTask').on('click', function () {
+			var entries = sdata[sdata.authenticatedUser].entries || []
+			$('#taskEntry').find(`.entry`).each( (i,v)=>{
+				var entry = { task :       $('.taskfield').get(i).value, 
+				hour : $('.hourfield').get(i).value,
+				remark : $('.remarkfield').get(i).value
+				}
+
+				entries[i] = entry
+					
+				//console.log(  $('.taskfield').get(i).value, $('.hourfield').get(i).value, $('.remarkfield').get(i).value )	
+			})
+
+
+			sdata[sdata.authenticatedUser].entries = entries
+			localStorage.setItem('sdata', JSON.stringify(sdata))
+			
+		});
+
+
+		$(document).ready( ()=>{
+			
+			if (sdata[sdata.authenticatedUser].entries) { 
+				sdata[sdata.authenticatedUser].entries.forEach( value=>{				
+					addmed(value)
+				})
+			}	
+
+			
+		})
+	
+
+var med_arr = []
+var form_arr = []
+$('.med').each((i, v) => {
+    var med = $(v)
+
+    //options += "<option>"+med.text()+"</option>"
+    med_arr.push(med.text())
+    form_arr.push($($('.form').get(i)).text())
+
+    //    console.log(i, med.text())
+})
+
+var options = med_arr.map(med => '<option>' + med + '</option>').join('')
+var selectCnt = 0
+initAddMedClick()
+
+function countNo() {
+    $('.medNo').each((i, v) => {
+        //    console.log(i)
+        $(v).html(i + 1)
+    })
+}
+
+function addmed(value) {
+
+	var task = '', hour = '', remark = ''
+	if (value) {
+		task = value.task
+		hour = value.hour
+		remark = value.remark
+	}
+
+    $('#taskEntry').append(`<tr class='entry'>
+<td class="medNo"></td><td>
+<input id="search_${selectCnt}" class="taskfield" for="select_${selectCnt}" type="text" placeholder="Task" value="${task}" >
+<!--select id="select_${selectCnt}" style="max-width: 400px">${options}</select--></td>
+<td><input type="number" class="hourfield" style="width:80px" value="${hour}"></td>
+<td><input id="remark_${selectCnt}" class="remarkfield" type="text" value="${remark}" ></td>
+<td><i class="hand addmed fa fa-plus" aria-hidden="true"></i> <i id="delmed_${selectCnt}" class="hand fa fa-minus" aria-hidden="true"></i> </td>
+
+</tr>`)
+
+
+    var search_elem = $(`#search_${selectCnt}`)
+    var del_elem = $(`#delmed_${selectCnt}`)
+    var select_elem = $(`#select_${selectCnt}`)
+    var remark_elem = $(`#remark_${selectCnt}`)
+
+    var searchTimer
+    del_elem.on('click', () => {
+        del_elem.closest('tr').remove()
+        countNo()
+    })
+
+    /* search_elem.on('keyup', e => {
+
+        clearTimeout(searchTimer);
+        let keyword = search_elem.val();
+
+        if (!keyword) {
+            //$(`#${providerId} tr`).show();
+            return;
+        }
+        searchTimer = setTimeout(() => {
+
+            var filtered = med_arr.filter(med => med.toUpperCase().indexOf(keyword.toUpperCase()) >= 0);
+
+            var filtered_options = filtered.map(med => '<option>' + med + '</option>').join('')
+
+            //console.log(search_elem.attr('for'), keyword, filtered_options)
+            $(`#${search_elem.attr('for')}`).html(filtered_options)
+            matchDrugForm(search_elem.attr('for'), remark_elem)
+
+        }, 800)
+
+    }); */
+
+    // select_elem.on('change', () => {
+    //     matchDrugForm(select_elem.attr('id'), remark_elem)
+    // })
+
+    initAddMedClick()
+    countNo()
+    select_elem.trigger('change')
+
+    selectCnt++
+
+}
+
+function matchDrugForm(select_id, target) {
+    var med_refer = $(`#${select_id} option:selected`).text()
+    var form_index = med_arr.findIndex(v => v == med_refer)
+    target.val(form_arr[form_index])
+    //console.log(med_refer, form_index,  form_arr[form_index])
+}
+
+function initAddMedClick() {
+    $('.addmed').off()
+    $('.addmed').on('click', () => {
+        addmed()
+    })
+
+}
+/* 
+function buildPrintableMed() {
+    $('#target').show()
+    $('#footer').show()
+
+    $('#target').html(`<table class="table table-xs" id="taskEntry">
+<tr>
+<th>No</th><th>Name</th><th>Qty</th><th>Remark</th>
+</tr>
+</table>`)
+
+    $('#target table').on('dblclick', () => {
+        $('#target').hide()
+        $('#footer').hide()
+        $('#taskEntry').show()
+    })
+    $('#taskEntry tr').each((i, v) => {
+        var tds = $(v).find('td')
+        var no = $(tds[0]).text()
+        var med = $(tds[1]).find('option:selected').text()
+        var qty = $(tds[2]).find('input').val()
+        var remarks = $(tds[3]).find('input').val()
+
+        if (no) {
+            $('#target table').append(
+                `<tr class='section'>
+            <td>${no}</td><td>${med}</td><td>${qty}</td><td>${remarks}</td>
+        </tr>`)
+        }
+        //console.log(i, no, med)
+    })
+}
+ */
+
+</script>
+	
+</html>
